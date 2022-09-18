@@ -1,0 +1,67 @@
+<html>
+<center>
+	<head>
+		<meta charset="utf-8">
+	</head>
+<body>
+	<img src="https://nei.ufrn.br/dist/img/parceiros/sigaa.png">
+	<img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
+	<h1>PROJETO ENGENHARIA DE SOFTWARE - PLATAFORMA DE PROVAS</h1>
+	<h3>Para poder cadastrar as questões, primeiro deve-se fazer o registro</h3>
+	<br>
+	<p>Usuário:
+	<form>
+    <input type="text">    
+   	</form>
+   	<p>Senha:
+   	<form>
+    <input type="text">    
+   	</form>
+   	<p>Confirmar senha:
+	<form>
+    <input type="text">    
+   	</form>
+   	<p>E-mail:
+   	<form>
+    <input type="text">    
+   	</form>
+	<button onclick="login()"> Logar </button>
+	<button onclick="registrar()"> Registrar </button>
+
+<script>
+
+//alguns pontos a se analisar abaixo:
+
+function registrar(){
+	//como é só um esboço, não tentei atrelar ainda as lacunas pra
+	//preencher usuário, senha, confirmarSenha e email a função de registrar
+
+	var usuarioReg, email, senhaReg, confirmarSenha;
+	usuarioReg = prompt(" Digite o nome do seu usuário ");
+	senhaReg = parseInt(prompt(" Digite a sua senha "));
+	confirmarSenha = parseInt(prompt(" Digite novamente a sua senha "));
+	email = prompt(" Digite seu endereço de email ");
+}
+
+function login(){
+	var usuarioLog, senhaLog;
+	usuarioLog = prompt(" Digite o nome do seu usuário ");
+	senhaLog = parseInt(prompt(" Digite a sua senha "));
+
+	/* falta atrelar os dados registrados para fazer uma comparação no login
+	seria necessário Banco de Dados? Ou será que só uma chamada de função, 
+	passando como um vetor o usuarioReg e senhaReg para fazer uma comparação na função login?
+
+	if(usuarioLog == usuarioReg && senhaLog == senhaReg){
+		alert(" Logado com Sucesso ");
+	}else{
+		alert(" Usuário ou senha incorretos ");
+	}*/
+
+
+}
+	
+</script>
+</body>
+</center>
+</html>
