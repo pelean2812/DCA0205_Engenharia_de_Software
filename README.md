@@ -1,12 +1,11 @@
 # DCA0205_Engenharia_de_Software
----
+
 Componentes do grupo:
 - PEDRO LEANDRO BATISTA MARQUES
 - RYCHARDSON RIBEIRO DE SOUZA
 - EDSON AUGUSTO DIAS GOMES
 - PAULO RICARDO DANTAS
 - GABRIEL CRUZ DE LAVOR
----
 
 # Histórias de usuário
 - [X] No papel de professor, eu gostaria de cadastrar perguntas do tipo múltipla escolha (juntamente com a resposta, as categorias do tipo disciplina, assunto e dificuldade).
@@ -14,7 +13,6 @@ Componentes do grupo:
 - [ ] No papel de professor, eu gostaria de selecionar algumas questões e criar uma prova -> Difícil de implementar sem um banco de dados
 
 - [ ] No papel de professor, eu gostaria de corrigir as provas automaticamente e obter uma lista com as notas dos alunos -> Difícil de implementar sem um banco de dados
----
 
 # Passos da primeira Spring
 
