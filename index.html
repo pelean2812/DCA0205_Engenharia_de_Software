@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+<body>
+	<center>
+		<img src="https://nei.ufrn.br/dist/img/parceiros/sigaa.png">
+		<img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
+		<h1>PROJETO ENGENHARIA DE SOFTWARE - PLATAFORMA DE PROVAS</h1>
+		
+		<br>
+		<form>
+			<label for="login">Login:</label>
+			<input type="text" id="login" name="login"><br>
+			<label for="senha">Senha:</label>
+			<input type="password" id="senha" name="senha"><br>
+		</form>
+
+		<button onclick="login()"> Logar </button>
+	</center>
+	
+	<script>
+		function login(){
+			var login = document.getElementById("login").value;
+			var senha = document.getElementById("senha").value;
+
+			if(login == "admin" && senha == "admin"){
+				window.location.replace("cad_questoes.html");
+			}else{
+				alert("Usuário ou senha incorretos");
+			}
+		}
+	</script>
+</body>
+
+</html>

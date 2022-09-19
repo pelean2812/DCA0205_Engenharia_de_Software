@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	</head>
+<body>
+    <center>
+	    <img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
+	    <h1>TELA DE CADASTRO DE QUESTÕES</h1>
+
+        <form id = "formulario">
+            <label for="enunciado">enunciado:</label>
+	    	<input type="text" id="enunciado" name="enunciado"><br>
+	    	<label for="alternativas">alternativas:</label>
+	    	<input type="text" id="alternativas" name="alternativas"><br>
+            <label for="resposta">resposta:</label>
+	    	<input type="text" id="resposta" name="resposta"><br>
+            <label for="dificuldade">dificuldade:</label>
+	    	<input type="text" id="dificuldade" name="dificuldade"><br>
+            <label for="categoria">categoria:</label>
+	    	<input type="text" id="categoria" name="categoria"><br>
+        </form>
+
+        <button onclick="cadastrar()">Cadastrar</button>
+    
+        <div class = "questoes">
+            
+        </div>
+
+        <form>
+            <button> <a style = "text-decoration: none" href="index.html"> Deslogar </a> </button>
+        </form>
+    </center>
+
+    <script>
+        var enun = [];
+        var alt = [];
+        var res = [];
+        var difi = [];
+        var cat = [];
+
+		function cadastrar(){
+			enun.append(document.getElementById("enunciado").value);
+			alt.append(document.getElementById("alternativas").value);
+            res.append(resposta = document.getElementById("resposta").value);
+			difi.append(dificuldade = document.getElementById("dificuldade").value);
+            cat.append(categoria = document.getElementById("categoria").value);
+
+            alert(document.getElementById("enunciado").value);
+
+            // var q = "<div class='card' style='width: 18rem;'>"+
+            //                "<div class='card-body'>"+
+            //                     "<h5 class='card-title'>Questão</h5>"+
+            //                     "<p class='card-text'>Enunciado: "+enunciado+"</p><br/>"+
+            //                     "<p class='card-text'>Alternativas: "+alternativas+"</p><br/>"+
+            //                     "<p class='card-text'>Resposta: "+resposta+"</p><br/>"+
+            //                     "<p class='card-text'>Dificuldade: "+dificuldade+"</p><br/>"+
+            //                     "<p class='card-text'>Categoria: "+categoria+"</p><br/>"+
+            //                 "</div>"+
+            //             "</div>";
+
+            // document.getElementsByClassName("questoes").innerHtml += "<h1>AAAAAAAAAAA</h1>";
+		}
+	</script>
+</body>
+</html>
