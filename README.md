@@ -16,10 +16,10 @@ Componentes do grupo:
 - No papel de professor, eu gostaria de corrigir as provas automaticamente e obter uma lista com as notas dos alunos -> Difícil de implementar sem um banco de dados
 ---
 
-# Primeiros passos
+# Passos da primeira Spring
 
-1. Tela de login (não é todo mundo que vai poder cadastrar as questões)
-2. Tela de cadastro (Formulário: enunciado, as escolhas, a categoria das questões, o tipo da disciplina, o assunto e a dificuldade)
+1. Tela de login (não é todo mundo que vai poder cadastrar as questões): Feita por Edson e Rychardson
+2. Tela de cadastro (Formulário: enunciado, as alternativas, a categoria das questões, o tipo da disciplina, o assunto e a dificuldade): Feita por Pedro, Rychardson e Paulo
 3. Tela de cadastro, exibir logo abaixo as questões cadastradas.
 
 - Tudo isso será feito sem um banco de dados
