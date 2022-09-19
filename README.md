@@ -18,7 +18,7 @@ Componentes do grupo:
 
 Levando em consideração as três históriasd de usuário, conseguimos implementar a parte de cadastrar as questões.
 
-1. Tela de login (não é todo mundo que vai poder cadastrar as questões): Feita por Edson e Rychardson.
+1. Tela de login (não é todo mundo que vai poder cadastrar as questões): Feita por Edson, Rychardson e Gabriel.
 2. Tela de cadastro (Formulário: enunciado, as alternativas, a categoria das questões, o tipo da disciplina, o assunto e a dificuldade): Feita por Pedro, Rychardson e Paulo
 
 ---
