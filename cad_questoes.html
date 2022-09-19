@@ -8,24 +8,39 @@
 	    <img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
 	    <h1>TELA DE CADASTRO DE QUESTÕES</h1>
 
-        <form id = "formulario">
-            <label for="enunciado">enunciado:</label>
-	    	<input type="text" id="enunciado" name="enunciado"><br>
-	    	<label for="alternativas">alternativas:</label>
-	    	<input type="text" id="alternativas" name="alternativas"><br>
-            <label for="resposta">resposta:</label>
-	    	<input type="text" id="resposta" name="resposta"><br>
-            <label for="dificuldade">dificuldade:</label>
-	    	<input type="text" id="dificuldade" name="dificuldade"><br>
-            <label for="categoria">categoria:</label>
-	    	<input type="text" id="categoria" name="categoria"><br>
+        <form id = "formulario" style="width: 400px">
+
+            <div class="mb-3">
+			    <label for="enunciado" class="form-label">enunciado</label>
+			    <input type="text" class="form-control" id="enunciado">
+			</div>
+
+            <div class="mb-3">
+			    <label for="alternativas" class="form-label">alternativas</label>
+			    <input type="text" class="form-control" id="alternativas">
+			</div>
+
+            <div class="mb-3">
+			    <label for=respostao" class="form-label">resposta</label>
+			    <input type="text" class="form-control" id="resposta">
+			</div>
+
+            <div class="mb-3">
+			    <label for="dificuldade" class="form-label">dificuldade</label>
+			    <input type="text" class="form-control" id="dificuldade">
+			</div>
+
+            <div class="mb-3">
+			    <label for="categoria" class="form-label">categoria</label>
+			    <input type="text" class="form-control" id="categoria">
+			</div>
         </form>
 
-        <button onclick="cadastrar()">Cadastrar</button></br></br>
+        <button class="btn btn-primary" onclick="cadastrar()">Cadastrar</button></br></br>
 
         <div id="teste"></div><br>
 
-        <button> <a style = "text-decoration: none" href="index.html"> Deslogar </a> </button>
+        <button class="btn btn-light"> <a style = "text-decoration: none" href="index.html"> Deslogar </a> </button>
         
     </center>
 
@@ -35,6 +50,7 @@
         var resposta = [];
         var dificuldade = [];
         var categoria = [];
+        var index = 0;
 		
         function cadastrar(){
 	        var enun = document.getElementById("enunciado").value;
@@ -42,10 +58,12 @@
             var res = document.getElementById("resposta").value;
 	        var difi = document.getElementById("dificuldade").value;
             var cat = document.getElementById("categoria").value;
+            index++;
+            alert("questão cadastrada com sucesso"); 
 
             var q = "<div class='card' style='width: 18rem;'>\
                             <div class='card-body'>\
-                               <h5 class='card-title'>Questão</h5>\
+                               <h5 class='card-title'>Questão "+index+"</h5>\
                                <p class='card-text'>Enunciado: "+enun+"</p><br/>\
                                <p class='card-text'>Alternativas: "+alt+"</p><br/>\
                                <p class='card-text'>Resposta: "+res+"</p><br/>\

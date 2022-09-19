@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 	</head>
 <body>
 	<center>
@@ -9,14 +10,20 @@
 		<h1>PROJETO ENGENHARIA DE SOFTWARE - PLATAFORMA DE PROVAS</h1>
 		
 		<br>
-		<form>
-			<label for="login">Login:</label>
-			<input type="text" id="login" name="login"><br>
-			<label for="senha">Senha:</label>
-			<input type="password" id="senha" name="senha"><br>
+
+		<form style = "width: 400px">
+			<div class="mb-3">
+			    <label for="login" class="form-label">login</label>
+			    <input type="text" class="form-control" id="login">
+			</div>
+			
+			<div class="mb-3">
+			    <label for="senha" class="form-label">senha</label>
+			    <input type="password" class="form-control" id="senha">
+			</div>
 		</form>
 
-		<button onclick="login()"> Logar </button>
+		<button class="btn btn-primary" onclick="login()">Logar</button>
 	</center>
 	
 	<script>
