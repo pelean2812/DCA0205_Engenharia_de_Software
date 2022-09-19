@@ -21,46 +21,48 @@
 	    	<input type="text" id="categoria" name="categoria"><br>
         </form>
 
-        <button onclick="cadastrar()">Cadastrar</button>
-    
-        <div class = "questoes">
-            
-        </div>
+        <button onclick="cadastrar()">Cadastrar</button></br></br>
 
-        <form>
-            <button> <a style = "text-decoration: none" href="index.html"> Deslogar </a> </button>
-        </form>
+        <div id="teste"></div><br>
+
+        <button> <a style = "text-decoration: none" href="index.html"> Deslogar </a> </button>
+        
     </center>
 
     <script>
-        var enun = [];
-        var alt = [];
-        var res = [];
-        var difi = [];
-        var cat = [];
+        var enunciado = [];
+        var alternativas = [];
+        var resposta = [];
+        var dificuldade = [];
+        var categoria = [];
+		
+        function cadastrar(){
+	        var enun = document.getElementById("enunciado").value;
+	        var alt = document.getElementById("alternativas").value;
+            var res = document.getElementById("resposta").value;
+	        var difi = document.getElementById("dificuldade").value;
+            var cat = document.getElementById("categoria").value;
 
-		function cadastrar(){
-			enun.append(document.getElementById("enunciado").value);
-			alt.append(document.getElementById("alternativas").value);
-            res.append(resposta = document.getElementById("resposta").value);
-			difi.append(dificuldade = document.getElementById("dificuldade").value);
-            cat.append(categoria = document.getElementById("categoria").value);
+            var q = "<div class='card' style='width: 18rem;'>\
+                            <div class='card-body'>\
+                               <h5 class='card-title'>Questão</h5>\
+                               <p class='card-text'>Enunciado: "+enun+"</p><br/>\
+                               <p class='card-text'>Alternativas: "+alt+"</p><br/>\
+                               <p class='card-text'>Resposta: "+res+"</p><br/>\
+                               <p class='card-text'>Dificuldade: "+difi+"</p><br/>\
+                               <p class='card-text'>Categoria: "+cat+"</p><br/>\
+                               <a href='#' class='btn btn-danger'>APAGAR</a>\
+                           </div>\
+                        </div></br>";
 
-            alert(document.getElementById("enunciado").value);
+            document.getElementById("teste").innerHTML += q;
 
-            // var q = "<div class='card' style='width: 18rem;'>"+
-            //                "<div class='card-body'>"+
-            //                     "<h5 class='card-title'>Questão</h5>"+
-            //                     "<p class='card-text'>Enunciado: "+enunciado+"</p><br/>"+
-            //                     "<p class='card-text'>Alternativas: "+alternativas+"</p><br/>"+
-            //                     "<p class='card-text'>Resposta: "+resposta+"</p><br/>"+
-            //                     "<p class='card-text'>Dificuldade: "+dificuldade+"</p><br/>"+
-            //                     "<p class='card-text'>Categoria: "+categoria+"</p><br/>"+
-            //                 "</div>"+
-            //             "</div>";
-
-            // document.getElementsByClassName("questoes").innerHtml += "<h1>AAAAAAAAAAA</h1>";
-		}
+            enunciado.push(enun);
+            alternativas.push(alt);
+            resposta.push(resposta);
+            dificuldade.push(difi);
+            cateogira.push(cat);
+        }
 	</script>
 </body>
 </html>
