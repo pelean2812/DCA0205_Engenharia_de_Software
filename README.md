@@ -29,4 +29,4 @@ Levando em consideração as três históriasd de usuário, conseguimos implemen
 ![tela de cadastro](/sprint1imagens/3.PNG)
 
 ## Dificuldades
-Como tudo isso foi feito sem um banco de dados, não conseguimos cadastrar um professor para que só assim ele consiga logar, por isso, o usuário e senha padrão são, respectivamente "admin" e "admin" (sem as aspas). Também devido a ausência de um banco de dados, sempre que a página é recarregada, as questões cadastradas sumiam. Em suma, a dificuldade está no armazenamento das questões. Com isso, das três histórias de usuário, apenas uma foi implementada aceitávelmente.
+Como tudo isso foi feito sem um banco de dados, não conseguimos cadastrar um professor para que só assim ele consiga logar, por isso, o usuário e senha padrão são, respectivamente "admin" e "admin" (sem as aspas). Também devido a ausência de um banco de dados, sempre que a página é recarregada, as questões cadastradas sumiam. Em suma, a dificuldade está no armazenamento das questões. Com isso, das três histórias de usuário, apenas uma foi implementada aceitavelmente.
