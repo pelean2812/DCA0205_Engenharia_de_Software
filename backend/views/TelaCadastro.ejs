@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	</head>
+<body>
+    <center>
+	    <img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
+	    <h1>TELA DE CADASTRO DE QUESTÕES</h1>
+
+        <form id = "formulario" style="width: 400px">
+
+            <div class="mb-3">
+			    <label for="enunciado" class="form-label">enunciado</label>
+			    <input type="text" class="form-control" id="enunciado">
+			</div>
+
+            <div class="mb-3">
+			    <label for="alternativas" class="form-label">alternativas</label>
+			    <input type="text" class="form-control" id="alternativas">
+			</div>
+
+            <div class="mb-3">
+			    <label for=respostao" class="form-label">resposta</label>
+			    <input type="text" class="form-control" id="resposta">
+			</div>
+
+            <div class="mb-3">
+			    <label for="dificuldade" class="form-label">dificuldade</label>
+			    <input type="text" class="form-control" id="dificuldade">
+			</div>
+
+            <div class="mb-3">
+			    <label for="categoria" class="form-label">categoria</label>
+			    <input type="text" class="form-control" id="categoria">
+			</div>
+        </form>
+
+        <button class="btn btn-primary" onclick="cadastrar()">Cadastrar</button></br></br>
+
+        <div id="teste"></div><br>
+
+        <button class="btn btn-light"> <a style = "text-decoration: none" href="index.html"> Deslogar </a> </button><br><br>
+        
+    </center>
+
+    <script>
+        var enunciado = [];
+        var alternativas = [];
+        var resposta = [];
+        var dificuldade = [];
+        var categoria = [];
+        var index = 0;
+		
+        function cadastrar(){
+	        var enun = document.getElementById("enunciado").value;
+	        var alt = document.getElementById("alternativas").value;
+            var res = document.getElementById("resposta").value;
+	        var difi = document.getElementById("dificuldade").value;
+            var cat = document.getElementById("categoria").value;
+            index++;
+            alert("questão cadastrada com sucesso"); 
+
+            var q = "<div class='card' style='width: 18rem;'>\
+                            <div class='card-body'>\
+                               <h5 class='card-title'>Questão "+index+"</h5>\
+                               <p class='card-text'>Enunciado: "+enun+"</p><br/>\
+                               <p class='card-text'>Alternativas: "+alt+"</p><br/>\
+                               <p class='card-text'>Resposta: "+res+"</p><br/>\
+                               <p class='card-text'>Dificuldade: "+difi+"</p><br/>\
+                               <p class='card-text'>Categoria: "+cat+"</p><br/>\
+                               <a href='#' class='btn btn-danger'>APAGAR</a>\
+                           </div>\
+                        </div></br>";
+
+            document.getElementById("teste").innerHTML += q;
+
+            enunciado.push(enun);
+            alternativas.push(alt);
+            resposta.push(resposta);
+            dificuldade.push(difi);
+            cateogira.push(cat);
+        }
+	</script>
+</body>
+</html>
