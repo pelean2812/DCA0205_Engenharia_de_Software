@@ -1,4 +1,4 @@
-# Comandos para usar o backend após baixar repositório
+# Comandos para usar o app
 OBS: Necessário ter o Node.js instalado
 
 - <strong>npm install</strong> (dentro da pasta backend)
