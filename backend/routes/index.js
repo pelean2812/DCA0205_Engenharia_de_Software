@@ -5,5 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('Login');
 });
+router.get('/TelaCadastro', function(req, res, next) {
+  res.render('TelaCadastro.ejs');
+});
 
 module.exports = router;
