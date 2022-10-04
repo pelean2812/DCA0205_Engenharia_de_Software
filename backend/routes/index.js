@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('Login');
 });
 router.get('/TelaCadastro', function(req, res, next) {
-  res.render('TelaCadastro.ejs');
+  res.render('TelaCadastro');
 });
 
 module.exports = router;
