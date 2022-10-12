@@ -62,40 +62,13 @@
         <div id="teste"></div><br>
 
 
-        <button class="btn btn-light"> <a style="text-decoration: none" href="/"> Deslogar </a> </button><br><br>
+        <button class="btn btn-light"> <a style="text-decoration: none" href="/QuestoesCadastradas"> Voltar </a> </button><br><br>
 
     </center>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        async function apagar(id) {
-
-        }
-        async function carregar() {
-            const resposta = await axios.get('http://localhost:3000/question');
-            const data = resposta.data.questions;
-            var q;
-            for (let i = 0; i < data.length; i++) {
-                q = `<div class='card' style='width: 18rem;'>\
-                            <div class='card-body'>\
-                               <h5 class='card-title'>Questão  ${i} </h5>\
-                               <p class='card-text'>id:  ${data[i].id} </p><br/>\
-                               <p class='card-text'>Enunciado:  ${data[i].enunciado} </p><br/>\
-                               <p class='card-text'>A:  ${data[i].alternativas[0]} </p><br/>\
-                               <p class='card-text'>B:  ${data[i].alternativas[1]} </p><br/>\
-                               <p class='card-text'>C:  ${data[i].alternativas[2]} </p><br/>\
-                               <p class='card-text'>Resposta:  ${data[i].resposta} </p><br/>\
-                               <p class='card-text'>Dificuldade:  ${data[i].dificuldade} </p><br/>\
-                               <p class='card-text'>Categoria:  ${data[i].categoria} </p><br/>\
-                               <button class='btn btn-danger' onclick='apagar(${data[i].id})'>APAGAR</button>\
-                           </div>\
-                        </div></br>`;
-
-                document.getElementById("teste").innerHTML += q;
-            }
-        }
-        carregar();
+        const index = 1;
         function cadastrar() {
-            var index = 1;
             var enun = document.getElementById("enunciado").value;
             var altA = document.getElementById("A").value;
             var altB = document.getElementById("B").value;
@@ -130,6 +103,8 @@
                 document.getElementById("teste").innerHTML += q;
                 index++;
             });
+            alert("Questão cadastrada com sucesso");
+            window.location.replace('QuestoesCadastradas');
         }
     </script>
 </body>

@@ -22,6 +22,10 @@ router.get('/', function (req, res, next) {
   res.render('Login');
 });
 
+router.get('/QuestoesCadastradas', function (req, res, next) {
+  res.render('QuestoesCadastradas');
+});
+
 router.post('/login', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -39,12 +43,26 @@ router.post('/login', (req, res) => {
   return res.json({ token: token, role: user.role });
 });
 
+function verifyJWT(req,res,next){
+  const token = req.headers.authorization.split(' ')[1];
+  jwt.verify(token, SECRET, (err, decoded) => {
+    if(err){
+      return res.sendStatus(401);
+    }
+    req.userid = decoded.userid;
+    req.role = decoded.role;
+    next();
+  })
+}
+
 router.get('/TelaCadastro', function (req, res, next) {
   res.render('TelaCadastro');
 });
 
-router.post('/question', (req, res) => {
-  console.log(req.headers);
+router.post('/question', verifyJWT, (req, res) => {
+  if(req.role !== 'teacher'){
+    return res.sendStatus(401);
+  }
   let question = req.body;
   question.id = inc;
   questions.push(question);

@@ -39,7 +39,7 @@
 				window.localStorage.setItem('token', result.data.token);
 				axios.defaults.headers.commom = {'Authorization': `Bearer ${result.data.token}`};
 				if(result.data.role === 'teacher'){
-					window.location.replace('TelaCadastro');
+					window.location.replace('QuestoesCadastradas');
 				}
 				/*if(result.data.role === 'student'){
 					window.location.replace('Provas');
