@@ -26,17 +26,27 @@
 
 		<button class="btn btn-primary" onclick="login()">Logar</button>
 	</center>
-	
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
 		function login(){
 			var login = document.getElementById("login").value;
 			var senha = document.getElementById("senha").value;
 
-			if(login == "admin" && senha == "admin"){
-				window.location.replace("TelaCadastro");
-			}else{
-				alert("Usuário ou senha incorretos");
-			}
+			axios.post('http://localhost:3000/login',{
+				username: login,
+				password: senha
+			}).then((result)=>{
+				window.localStorage.setItem('token', result.data.token);
+				axios.defaults.headers.commom = {'Authorization': `bearer ${result.data.token}`};
+				if(result.data.role === 'teacher'){
+					window.location.replace('TelaCadastro');
+				}
+				/*if(result.data.role === 'student'){
+					window.location.replace('Provas');
+				}*/
+			}).catch(()=>{
+				console.log("Login falhou");
+			});
 		}
 	</script>
 </body>

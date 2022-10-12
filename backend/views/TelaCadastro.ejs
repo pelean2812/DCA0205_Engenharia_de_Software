@@ -60,23 +60,20 @@
         <button class="btn btn-primary" onclick="cadastrar()">Cadastrar</button></br></br>
 
         <div id="teste"></div><br>
-        
+
 
         <button class="btn btn-light"> <a style="text-decoration: none" href="/"> Deslogar </a> </button><br><br>
 
     </center>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        async function apagar(id){
-            
-        }
+        async function apagar(id) {
 
+        }
         async function carregar() {
             const resposta = await axios.get('http://localhost:3000/question');
             const data = resposta.data.questions;
-            console.log(data);
             var q;
-
             for (let i = 0; i < data.length; i++) {
                 q = `<div class='card' style='width: 18rem;'>\
                             <div class='card-body'>\
@@ -92,15 +89,13 @@
                                <button class='btn btn-danger' onclick='apagar(${data[i].id})'>APAGAR</button>\
                            </div>\
                         </div></br>`;
-                    
+
                 document.getElementById("teste").innerHTML += q;
             }
         }
         carregar();
-
-
         function cadastrar() {
-            var index = 0;
+            var index = 1;
             var enun = document.getElementById("enunciado").value;
             var altA = document.getElementById("A").value;
             var altB = document.getElementById("B").value;
@@ -108,8 +103,8 @@
             var res = document.getElementById("resposta").value;
             var difi = document.getElementById("dificuldade").value;
             var cat = document.getElementById("categoria").value;
-            index++;
             var q;
+            const token = window.localStorage.getItem('token');
 
             axios.post('http://localhost:3000/question', {
                 enunciado: enun,
@@ -117,10 +112,11 @@
                 resposta: res,
                 dificuldade: difi,
                 categoria: cat,
-            }).then((value) => {
+            },{headers: {'Authorization': `bearer ${token}`}}).then((value) => {
                 q = `<div class='card' style='width: 18rem;'>\
                             <div class='card-body'>\
                                <h5 class='card-title'>Questão  ${index} </h5>\
+                               <p class='card-text'>id:  ${index} </p><br/>\
                                <p class='card-text'>Enunciado:  ${enun} </p><br/>\
                                <p class='card-text'>A:  ${altA} </p><br/>\
                                <p class='card-text'>B:  ${altB} </p><br/>\
@@ -131,11 +127,9 @@
                                <button class='btn btn-danger' onclick='apagar(${value.id})'>APAGAR</button>\
                            </div>\
                         </div></br>`;
-
                 document.getElementById("teste").innerHTML += q;
+                index++;
             });
-
-
         }
     </script>
 </body>
