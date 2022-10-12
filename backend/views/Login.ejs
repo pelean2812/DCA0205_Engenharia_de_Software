@@ -37,7 +37,7 @@
 				password: senha
 			}).then((result)=>{
 				window.localStorage.setItem('token', result.data.token);
-				axios.defaults.headers.commom = {'Authorization': `bearer ${result.data.token}`};
+				axios.defaults.headers.commom = {'Authorization': `Bearer ${result.data.token}`};
 				if(result.data.role === 'teacher'){
 					window.location.replace('TelaCadastro');
 				}
@@ -45,7 +45,7 @@
 					window.location.replace('Provas');
 				}*/
 			}).catch(()=>{
-				console.log("Login falhou");
+				alert("Login ou senha inválidos");
 			});
 		}
 	</script>
