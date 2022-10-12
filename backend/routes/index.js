@@ -1,6 +1,17 @@
+//Iniciando array com algumas questões
+/*{
+  id: 1,
+  enunciado: "Quanto é 1 + 1 ?",
+  
+}*/
+var questions = [];
+
+
+
+
+
 var express = require('express');
 var router = express.Router();
-var questions = [];
 let inc = 1;
 const jwt = require('jsonwebtoken');
 const SECRET = "projetopes";
@@ -16,6 +27,12 @@ let users = [{
   username: "Aluno",
   password: "aluno",
   role: "student"
+},
+{
+  userid: "3",
+  username: "adm",
+  password: "adm",
+  role: "teacher"
 }];
 
 router.get('/', function (req, res, next) {
@@ -77,10 +94,10 @@ router.get('/question', (req, res) => {
   return;
 });
 
-router.delete('/question', (req, res) => {
-  const index = req.params.id
-  console.log("apagou com sucesso");
-  return;
+router.delete('/question/:id', (req, res) => {
+  const index = req.params.id;
+  questions = questions.filter((question) => +index !== question.id);
+  return res.sendStatus(200);
 });
 
 module.exports = router;

@@ -20,23 +20,27 @@
     </center>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        const respostas = ['A','B','C'];
         async function apagar(id) {
-
+            axios.delete(`http://localhost:3000/question/${id}`);
+            carregar();
         }
         async function carregar() {
+            console.log('carregou');
             const resposta = await axios.get('http://localhost:3000/question');
             const data = resposta.data.questions;
+            document.getElementById("teste").innerHTML = '';
             var q;
             for (let i = 0; i < data.length; i++) {
                 q = `<div class='card' style='width: 18rem;'>\
                             <div class='card-body'>\
-                               <h5 class='card-title'>Questão  ${i} </h5>\
+                               <h5 class='card-title'>Questão  ${i+1} </h5>\
                                <p class='card-text'>id:  ${data[i].id} </p><br/>\
                                <p class='card-text'>Enunciado:  ${data[i].enunciado} </p><br/>\
                                <p class='card-text'>A:  ${data[i].alternativas[0]} </p><br/>\
                                <p class='card-text'>B:  ${data[i].alternativas[1]} </p><br/>\
                                <p class='card-text'>C:  ${data[i].alternativas[2]} </p><br/>\
-                               <p class='card-text'>Resposta:  ${data[i].resposta} </p><br/>\
+                               <p class='card-text'>Resposta:  ${respostas[+data[i].resposta]} </p><br/>\
                                <p class='card-text'>Dificuldade:  ${data[i].dificuldade} </p><br/>\
                                <p class='card-text'>Categoria:  ${data[i].categoria} </p><br/>\
                                <button class='btn btn-danger' onclick='apagar(${data[i].id})'>APAGAR</button>\
