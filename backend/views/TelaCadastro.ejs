@@ -35,6 +35,10 @@
                     <label for="C" class="form-label">C</label>
                     <input type="text" class="form-control" id="C">
                 </div>
+                <div>
+                    <label for="D" class="form-label">D</label>
+                    <input type="text" class="form-control" id="D">
+                </div>
             </div>
 
             <div class="mb-3">
@@ -43,6 +47,7 @@
                     <option value="0">A</option>
                     <option value="1">B</option>
                     <option value="2">C</option>
+                    <option value="3">D</option>
                 </select>
             </div>
 
@@ -78,6 +83,7 @@
             var altA = document.getElementById("A").value;
             var altB = document.getElementById("B").value;
             var altC = document.getElementById("C").value;
+            var altD = document.getElementById("D").value;
             var res = document.getElementById("resposta").value;
             var difi = document.getElementById("dificuldade").value;
             var cat = document.getElementById("categoria").value;
@@ -88,7 +94,7 @@
             //Requisição POST para cadastrar questão
             axios.post('http://localhost:3000/question', {
                 enunciado: enun,
-                alternativas: [altA, altB, altC],
+                alternativas: [altA, altB, altC, altD],
                 resposta: res,
                 dificuldade: difi,
                 categoria: cat,

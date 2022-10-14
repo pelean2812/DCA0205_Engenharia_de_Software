@@ -48,9 +48,9 @@
 						window.location.replace('QuestoesCadastradas');
 					});
 				}
-				/*if(result.data.role === 'student'){
-					window.location.replace('Provas');
-				}*/
+				if(result.data.role === 'student'){
+					window.location.replace('TelaAlunoProvas');
+				}
 			}).catch(()=>{
 				alert("Login ou senha inválidos");
 			});

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+
+<body>
+    <center>
+        <img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
+        <h1>TELA DE PROVAS</h1>
+
+        <button class="btn btn-light" onclick="logout()"> <a style="text-decoration: none"> Deslogar </a> </button><br><br>
+    </center>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function logout(){
+            axios.get('http://localhost:3000/logout');
+            window.location.replace('/');
+        }
+    </script>
+</body>
+
+</html>

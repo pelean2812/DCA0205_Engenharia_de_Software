@@ -1,23 +1,61 @@
 
 var questions = [
   {
-  id: 1,
-  enunciado: "Quanto é 1 + 1 ?",
-  alternativas: ['11','2','5'],
-  resposta: 1,
-  dificuldade: 'Fácil',
-  categoria: 'Matemática'
-}
+    id: 1,
+    enunciado: "Quanto é 1 + 1 ?",
+    alternativas: ['11','2','5', 'JOTA'],
+    resposta: 1,
+    dificuldade: 'Fácil',
+    categoria: 'Matemática'
+  },
+  {
+    id: 2,
+    enunciado: "Quanto é 2 + 2 ?",
+    alternativas: ['12','22','4', 'DÁBLIU'],
+    resposta: 2,
+    dificuldade: 'DIFÍCIL',
+    categoria: 'Matemática'
+  },
+  {
+    id: 3,
+    enunciado: "Quanto é 2 + 3 ?",
+    alternativas: ['5','22','4', 'DÁBLIU'],
+    resposta: 0,
+    dificuldade: 'DIFÍCIL',
+    categoria: 'Matemática'
+  },
+  {
+    id: 4,
+    enunciado: "Quanto é 5 + 5 ?",
+    alternativas: ['VINTE','DEZ','4', 'DÁBLIU'],
+    resposta: 1,
+    dificuldade: 'DIFÍCIL',
+    categoria: 'Matemática'
+  },
+  {
+    id: 5,
+    enunciado: "Quanto é 20 + 10 ?",
+    alternativas: ['5','22','40', 'DÁBLIU'],
+    resposta: 2,
+    dificuldade: 'DIFÍCIL',
+    categoria: 'MATEMÁGICA'
+  },
+  {
+    id: 6,
+    enunciado: "Quanto é 20 + 30 ?",
+    alternativas: ['5','CINQUENTA','40', 'DÁBLIU'],
+    resposta: 1,
+    dificuldade: 'DIFÍCIL',
+    categoria: 'MATEMÁTICA'
+  }
 ];
-
-
-
 
 //Framework Express
 var express = require('express');
 var router = express.Router();
-//inc vai definir qual o id da questão
-let inc = 2;
+//como só tem uma questão cadastrada, o ID da próxima eh 2.
+//inc = n Questões + 1
+let inc = 7;
 //As linhas a seguir são para implementar o JWT (JSON Web Token)
 const jwt = require('jsonwebtoken');
 const SECRET = "projetopes";
@@ -73,6 +111,15 @@ router.get('/QuestoesCadastradas', verifyJWT ,function (req, res, next) {
   }
   res.render('QuestoesCadastradas');
 });
+
+//Rota obter página provas cadastradas
+router.get('/TelaAlunoProvas', verifyJWT , function (req, res, next) {
+  if(req.role !== 'student'){
+    return res.sendStatus(401);
+  }
+  res.render('TelaAlunoProvas');
+});
+
 
 //Rota POST para fazer login
 router.post('/login', (req, res) => {
