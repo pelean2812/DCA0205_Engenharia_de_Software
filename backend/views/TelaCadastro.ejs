@@ -62,13 +62,16 @@
         <div id="teste"></div><br>
 
 
-        <button class="btn btn-light"> <a style="text-decoration: none" href="/QuestoesCadastradas"> Voltar </a> </button><br><br>
+        <button class="btn btn-light" onclick="voltar()"> Voltar </button><br><br>
 
     </center>
     <!-- Importando a biblioteca axios para fazer requisições-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        const index = 1;
+        function voltar(){
+            window.location.replace('/QuestoesCadastradas');
+        }
+        var index = 1;
         //Função para enviar questão para o banco
         function cadastrar() {
             var enun = document.getElementById("enunciado").value;
@@ -89,23 +92,6 @@
                 resposta: res,
                 dificuldade: difi,
                 categoria: cat,
-            },{headers: {'Authorization': `bearer ${token}`}}).then((value) => {
-                q = `<div class='card' style='width: 18rem;'>\
-                            <div class='card-body'>\
-                               <h5 class='card-title'>Questão  ${index} </h5>\
-                               <p class='card-text'>id:  ${index} </p><br/>\
-                               <p class='card-text'>Enunciado:  ${enun} </p><br/>\
-                               <p class='card-text'>A:  ${altA} </p><br/>\
-                               <p class='card-text'>B:  ${altB} </p><br/>\
-                               <p class='card-text'>C:  ${altC} </p><br/>\
-                               <p class='card-text'>Resposta:  ${res} </p><br/>\
-                               <p class='card-text'>Dificuldade:  ${difi} </p><br/>\
-                               <p class='card-text'>Categoria:  ${cat} </p><br/>\
-                               <button class='btn btn-danger' onclick='apagar(${value.id})'>APAGAR</button>\
-                           </div>\
-                        </div></br>`;
-                document.getElementById("teste").innerHTML += q;
-                index++;
             });
             alert("Questão cadastrada com sucesso");
             window.location.replace('QuestoesCadastradas');

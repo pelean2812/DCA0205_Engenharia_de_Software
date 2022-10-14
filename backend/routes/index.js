@@ -1,10 +1,14 @@
-//Iniciando array com algumas questões
-/*{
+
+var questions = [
+  {
   id: 1,
   enunciado: "Quanto é 1 + 1 ?",
-  
-}*/
-var questions = [];
+  alternativas: ['11','2','5'],
+  resposta: 1,
+  dificuldade: 'Fácil',
+  categoria: 'Matemática'
+}
+];
 
 
 
@@ -13,7 +17,7 @@ var questions = [];
 var express = require('express');
 var router = express.Router();
 //inc vai definir qual o id da questão
-let inc = 1;
+let inc = 2;
 //As linhas a seguir são para implementar o JWT (JSON Web Token)
 const jwt = require('jsonwebtoken');
 const SECRET = "projetopes";
@@ -38,13 +42,35 @@ let users = [{
   role: "teacher"
 }];
 
+//Função para verificar se o token é válido
+function verifyJWT(req,res,next){
+  //A linha a seguir é para recuperar o token e separar o token da string: "Bearer "
+  const token = req.cookies.token;
+  if(!token){
+    return res.sendStatus(401);
+  }
+
+  jwt.verify(token, SECRET, (err, decoded) => {
+    if(err){
+      return res.sendStatus(401);
+    }
+    req.userid = decoded.userid;
+    req.role = decoded.role;
+    next();
+  })
+}
+
+
 //Rota inicial
 router.get('/', function (req, res, next) {
   res.render('Login');
 });
 
 //Rota obter página questões cadastradas
-router.get('/QuestoesCadastradas', function (req, res, next) {
+router.get('/QuestoesCadastradas', verifyJWT ,function (req, res, next) {
+  if(req.role !== 'teacher'){
+    return res.sendStatus(401);
+  }
   res.render('QuestoesCadastradas');
 });
 
@@ -63,28 +89,18 @@ router.post('/login', (req, res) => {
     return res.sendStatus(404)
   }
 
-  //Gerando Token com tempo válido de 1 dia
-  const token = jwt.sign({ userid: user.userid, role: user.role }, SECRET, { expiresIn: '1d' });
+  //Gerando Token com tempo válido de 1 hora
+  const token = jwt.sign({ userid: user.userid, role: user.role }, SECRET, { expiresIn: '1h' });
 
-  return res.json({ token: token, role: user.role });
+  //Guardando o token nos cookies da página
+  return res.cookie('token',token,{httpOnly: true, maxAge: 3600000}).json({ token: token, role: user.role });
 });
 
-//Função para verificar se o token é válido
-function verifyJWT(req,res,next){
-  //A linha a seguir é para recuperar o token e separar o token da string: "Bearer "
-  const token = req.headers.authorization.split(' ')[1];
-  jwt.verify(token, SECRET, (err, decoded) => {
-    if(err){
-      return res.sendStatus(401);
-    }
-    req.userid = decoded.userid;
-    req.role = decoded.role;
-    next();
-  })
-}
-
 //Rota obter página TelaCadastro
-router.get('/TelaCadastro', function (req, res, next) {
+router.get('/TelaCadastro', verifyJWT ,function (req, res, next) {
+  if(req.role !== 'teacher'){
+    return res.sendStatus(401);
+  }
   res.render('TelaCadastro');
 });
 
@@ -103,16 +119,27 @@ router.post('/question', verifyJWT, (req, res) => {
 });
 
 //Rota obter questões cadastradas
-router.get('/question', (req, res) => {
+router.get('/question', verifyJWT, (req, res) => {
+  if(req.role !== 'teacher'){
+    return res.sendStatus(401);
+  }
   res.send({ questions });
   return;
 });
 
 //Rota para deletar questões
-router.delete('/question/:id', (req, res) => {
+router.delete('/question/:id', verifyJWT, (req, res) => {
+  if(req.role !== 'teacher'){
+    return res.sendStatus(401);
+  }
   const index = req.params.id;
   questions = questions.filter((question) => +index !== question.id);
   return res.sendStatus(200);
 });
+
+router.get('/logout', (req, res) =>{
+  res.clearCookie('token');
+  return res.sendStatus(200);
+})
 
 module.exports = router;

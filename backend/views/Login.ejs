@@ -44,7 +44,9 @@
 
 				//Tela inicial caso o usuário for professor é questões cadastradas
 				if(result.data.role === 'teacher'){
-					window.location.replace('QuestoesCadastradas');
+					axios.get('http://localhost:3000/QuestoesCadastradas',{}).then(()=>{
+						window.location.replace('QuestoesCadastradas');
+					});
 				}
 				/*if(result.data.role === 'student'){
 					window.location.replace('Provas');

@@ -14,13 +14,16 @@
 
         <div id="teste"></div><br>
 
-        <button class="btn btn-light"> <a style="text-decoration: none" href="/TelaCadastro"> Cadastrar nova questão </a> </button><br><br>
-        <button class="btn btn-light"> <a style="text-decoration: none" href="/"> Deslogar </a> </button><br><br>
+        <button class="btn btn-primary" onclick="irParaCadastro()"> Cadastrar nova questão </button><br><br>
+        <button class="btn btn-light" onclick="logout()"> <a style="text-decoration: none"> Deslogar </a> </button><br><br>
 
     </center>
     <!-- Importando a biblioteca axios para fazer requisições-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        function irParaCadastro(){
+            window.location.replace('/TelaCadastro');
+        }
         //O array respostas é só para ajeitar a visualização do item "Resposta"
         const respostas = ['A','B','C'];
         //Função para apagar questão do banco
@@ -30,7 +33,7 @@
         }
         //Função para carregar as questões do banco
         async function carregar() {
-            console.log('carregou');            const resposta = await axios.get('http://localhost:3000/question');
+            const resposta = await axios.get('http://localhost:3000/question');
             const data = resposta.data.questions;
             document.getElementById("teste").innerHTML = '';
             var q;
@@ -54,6 +57,10 @@
             }
         }
         carregar();
+        function logout(){
+            axios.get('http://localhost:3000/logout');
+            window.location.replace('/');
+        }
     </script>
 </body>
 
