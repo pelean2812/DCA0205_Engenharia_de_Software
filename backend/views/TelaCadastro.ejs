@@ -65,9 +65,11 @@
         <button class="btn btn-light"> <a style="text-decoration: none" href="/QuestoesCadastradas"> Voltar </a> </button><br><br>
 
     </center>
+    <!-- Importando a biblioteca axios para fazer requisições-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         const index = 1;
+        //Função para enviar questão para o banco
         function cadastrar() {
             var enun = document.getElementById("enunciado").value;
             var altA = document.getElementById("A").value;
@@ -77,8 +79,10 @@
             var difi = document.getElementById("dificuldade").value;
             var cat = document.getElementById("categoria").value;
             var q;
+            //Recuperando o token
             const token = window.localStorage.getItem('token');
 
+            //Requisição POST para cadastrar questão
             axios.post('http://localhost:3000/question', {
                 enunciado: enun,
                 alternativas: [altA, altB, altC],

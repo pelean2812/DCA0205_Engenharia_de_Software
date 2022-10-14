@@ -26,18 +26,23 @@
 
 		<button class="btn btn-primary" onclick="login()">Logar</button>
 	</center>
+	<!-- Importando a biblioteca axios para fazer requisições-->
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
 		function login(){
 			var login = document.getElementById("login").value;
 			var senha = document.getElementById("senha").value;
-
+			
+			//Fazendo a requisição post enviando os dados de login
 			axios.post('http://localhost:3000/login',{
 				username: login,
 				password: senha
 			}).then((result)=>{
+				//Se o login for bem sucedido, o token é gerado e armazenado com as próximas linha de código
 				window.localStorage.setItem('token', result.data.token);
 				axios.defaults.headers.commom = {'Authorization': `Bearer ${result.data.token}`};
+
+				//Tela inicial caso o usuário for professor é questões cadastradas
 				if(result.data.role === 'teacher'){
 					window.location.replace('QuestoesCadastradas');
 				}

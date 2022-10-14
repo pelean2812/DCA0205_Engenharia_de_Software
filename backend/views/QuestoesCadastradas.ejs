@@ -18,16 +18,19 @@
         <button class="btn btn-light"> <a style="text-decoration: none" href="/"> Deslogar </a> </button><br><br>
 
     </center>
+    <!-- Importando a biblioteca axios para fazer requisições-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        //O array respostas é só para ajeitar a visualização do item "Resposta"
         const respostas = ['A','B','C'];
+        //Função para apagar questão do banco
         async function apagar(id) {
             axios.delete(`http://localhost:3000/question/${id}`);
             carregar();
         }
+        //Função para carregar as questões do banco
         async function carregar() {
-            console.log('carregou');
-            const resposta = await axios.get('http://localhost:3000/question');
+            console.log('carregou');            const resposta = await axios.get('http://localhost:3000/question');
             const data = resposta.data.questions;
             document.getElementById("teste").innerHTML = '';
             var q;
