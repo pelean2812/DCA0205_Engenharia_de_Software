@@ -10,75 +10,75 @@ var questions = [
   },
   {
     id: 2,
-    enunciado: "Quanto é 2 + 2 ?",
-    alternativas: ['12','22','4', 'DÁBLIU'],
-    resposta: 2,
-    dificuldade: 'DIFÍCIL',
-    categoria: 'Matemática'
+    enunciado: "Qual é o nome da bankai do ichigo?",
+    alternativas: ['Zangetsu','Tensa Zangetsu','Bankai', 'Zampakutou'],
+    resposta: 1,
+    dificuldade: 'Mediana',
+    categoria: 'Geek'
   },
   {
     id: 3,
-    enunciado: "Quanto é 2 + 3 ?",
-    alternativas: ['5','22','4', 'DÁBLIU'],
-    resposta: 0,
+    enunciado: "Who is Mr. Robot?",
+    alternativas: ['Mr. Robot','Elliot', 'Nobody', 'Who is?'],
+    resposta: 3,
     dificuldade: 'DIFÍCIL',
-    categoria: 'Matemática'
+    categoria: 'Geek'
   },
   {
     id: 4,
-    enunciado: "Quanto é 5 + 5 ?",
-    alternativas: ['VINTE','DEZ','4', 'DÁBLIU'],
-    resposta: 1,
-    dificuldade: 'DIFÍCIL',
-    categoria: 'Matemática'
+    enunciado: "Quanto custa o sanduiche natural do amigão?",
+    alternativas: ['R$ 4,00','R$ 2,50','R$ 3,00', 'R$ 2,00'],
+    resposta: 0,
+    dificuldade: 'Fácil',
+    categoria: 'Cumê'
   },
   {
     id: 5,
-    enunciado: "Quanto é 20 + 10 ?",
-    alternativas: ['5','22','40', 'DÁBLIU'],
+    enunciado: "Qual é o melhor peixe para se comer com cuscuz?",
+    alternativas: ['Piaba','Tainha','Pilato', 'Atum'],
     resposta: 2,
     dificuldade: 'DIFÍCIL',
-    categoria: 'MATEMÁGICA'
+    categoria: 'Cumê'
   },
   {
     id: 6,
-    enunciado: "Quanto é 20 + 30 ?",
-    alternativas: ['5','CINQUENTA','40', 'DÁBLIU'],
-    resposta: 1,
+    enunciado: "Quanto é 20 + 10 ?",
+    alternativas: ['30','2010','40', 'DÁBLIU'],
+    resposta: 2,
     dificuldade: 'DIFÍCIL',
     categoria: 'MATEMÁTICA'
   },
   {
     id: 7,
-    enunciado: "Quanto é 20 + 40 ?",
-    alternativas: ['5','CINQUENTA','60', 'DÁBLIU'],
-    resposta: 2,
-    dificuldade: 'DIFÍCIL',
+    enunciado: "No domínio da frequência, uma convolução vira uma:",
+    alternativas: ['Multiplicação','Divisão','Subtração', 'Somatória Infinita'],
+    resposta: 0,
+    dificuldade: 'Mediana',
     categoria: 'MATEMÁTICA'
   },
   {
     id: 8,
-    enunciado: "Quanto é 40 + 40 ?",
-    alternativas: ['5','OITENTA','60', 'DÁBLIU'],
-    resposta: 1,
-    dificuldade: 'DIFÍCIL',
+    enunciado: "Integrar no domínio do tempo, equivale, no domínio de laplace à:",
+    alternativas: ['Dividir a Função transforamda por s','Multiplicar a Função transforamda por s','Inegrar a função transformada', 'Derivar a função transformada'],
+    resposta: 0,
+    dificuldade: 'Mediana',
     categoria: 'MATEMÁTICA'
   },
   {
     id: 9,
-    enunciado: "Quanto é 100 + 40 ?",
-    alternativas: ['140','CINQUENTA','60', 'DÁBLIU'],
-    resposta: 0,
-    dificuldade: 'DIFÍCIL',
-    categoria: 'MATEMÁTICA'
+    enunciado: "Qual é a técnica mais poderosa de demon slayer?",
+    alternativas: ['Hinokami Kagura','Respiração do som','Respitação do sol', 'Respiração da água'],
+    resposta: 2,
+    dificuldade: 'Fácil',
+    categoria: 'Geek'
   },
   {
     id: 10,
-    enunciado: "Quanto é 50 + 40 ?",
-    alternativas: ['5','OITENTA','60', 'NOVENTAH'],
-    resposta: 3,
+    enunciado: "Feijão em cima ou em baixo do arroz?",
+    alternativas: ['Cima','Baixo','SIM!', 'De lado'],
+    resposta: 0,
     dificuldade: 'DIFÍCIL',
-    categoria: 'MATEMÁTICA'
+    categoria: 'Cumê'
   }
 ];
 
@@ -130,7 +130,6 @@ function verifyJWT(req,res,next){
   })
 }
 
-
 //Rota inicial
 router.get('/', function (req, res, next) {
   res.render('Login');
@@ -142,6 +141,14 @@ router.get('/QuestoesCadastradas', verifyJWT ,function (req, res, next) {
     return res.sendStatus(401);
   }
   res.render('QuestoesCadastradas');
+});
+
+//Rota obter tela criar prova
+router.get('/TelaCriarProva', verifyJWT ,function (req, res, next) {
+  if(req.role !== 'teacher'){
+    return res.sendStatus(401);
+  }
+  res.render('TelaCriarProva');
 });
 
 //Rota obter página provas cadastradas
