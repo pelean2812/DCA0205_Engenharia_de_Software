@@ -24,11 +24,18 @@
         }
         //O array respostas é só para ajeitar a visualização do item "Resposta"
         const respostas = ['A','B','C', 'D'];
-        //Função para apagar questão do banco
-        async function apagar(id) {
-            axios.delete(`http://localhost:3000/question/${id}`);
+        // Função para apagar questão do banco
+        // async function apagar(id) {
+        //     axios.delete(`http://localhost:3000/question/${id}`);
+        //     carregar();
+        // }
+        
+        //Função para adicionar a questão na prova
+        async function adicionarQuestaoProva(id) {
+            //????
             carregar();
         }
+
         //Função para carregar as questões do banco
         async function carregar() {
             const resposta = await axios.get('http://localhost:3000/question');
@@ -48,10 +55,7 @@
                                <p class='card-text'>Resposta:  ${respostas[+data[i].resposta]} </p><br/>\
                                <p class='card-text'>Dificuldade:  ${data[i].dificuldade} </p><br/>\
                                <p class='card-text'>Categoria:  ${data[i].categoria} </p><br/>\
-                               <input class="form-check-input" type="checkbox" value="" id="selecionarQuestao">
-                               <label class="form-check-label" for="selecionarQuestao">
-                                    Selecionar Questão
-                               </label>\
+                               <button class='btn btn-info' onclick='adicionarQuestaoProva(${data[i].id})'>ADICIONAR QUESTÃO</button>\
                            </div>\
                         </div></br>`;
 
