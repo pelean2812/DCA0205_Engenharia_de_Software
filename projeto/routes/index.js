@@ -47,6 +47,38 @@ var questions = [
     resposta: 1,
     dificuldade: 'DIFÍCIL',
     categoria: 'MATEMÁTICA'
+  },
+  {
+    id: 7,
+    enunciado: "Quanto é 20 + 40 ?",
+    alternativas: ['5','CINQUENTA','60', 'DÁBLIU'],
+    resposta: 2,
+    dificuldade: 'DIFÍCIL',
+    categoria: 'MATEMÁTICA'
+  },
+  {
+    id: 8,
+    enunciado: "Quanto é 40 + 40 ?",
+    alternativas: ['5','OITENTA','60', 'DÁBLIU'],
+    resposta: 1,
+    dificuldade: 'DIFÍCIL',
+    categoria: 'MATEMÁTICA'
+  },
+  {
+    id: 9,
+    enunciado: "Quanto é 100 + 40 ?",
+    alternativas: ['140','CINQUENTA','60', 'DÁBLIU'],
+    resposta: 0,
+    dificuldade: 'DIFÍCIL',
+    categoria: 'MATEMÁTICA'
+  },
+  {
+    id: 10,
+    enunciado: "Quanto é 50 + 40 ?",
+    alternativas: ['5','OITENTA','60', 'NOVENTAH'],
+    resposta: 3,
+    dificuldade: 'DIFÍCIL',
+    categoria: 'MATEMÁTICA'
   }
 ];
 

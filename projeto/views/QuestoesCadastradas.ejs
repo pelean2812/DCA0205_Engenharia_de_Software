@@ -14,7 +14,7 @@
         <img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
         <h1>TELA DE QUESTÕES CADASTRADAS</h1>
 
-        <div id="teste" style = "display:flex; flex-wrap: wrap; max-width: 400px;"></div><br>
+        <div id="teste" style = "display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 80%; "></div><br>
 
         <button class="btn btn-primary" onclick="irParaCadastro()"> Cadastrar nova questão </button><br><br>
         <button class="btn btn-light" onclick="logout()"> <a style="text-decoration: none"> Deslogar </a> </button><br><br>
@@ -40,7 +40,7 @@
             document.getElementById("teste").innerHTML = '';
             var q;
             for (let i = 0; i < data.length; i++) {
-                q = `<div class='card' style='width: 18rem;'>\
+                q = `<div class='card' style='width: 18rem; margin-bottom: 20px'>\
                             <div class='card-body'>\
                                <h5 class='card-title'>Questão  ${i+1} </h5>\
                                <p class='card-text'>id:  ${data[i].id} </p><br/>\
