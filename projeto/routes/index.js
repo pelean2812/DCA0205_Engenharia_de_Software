@@ -87,7 +87,7 @@ var express = require('express');
 var router = express.Router();
 //como só tem uma questão cadastrada, o ID da próxima eh 2.
 //inc = n Questões + 1
-let inc = 7;
+let inc = 11;
 //As linhas a seguir são para implementar o JWT (JSON Web Token)
 const jwt = require('jsonwebtoken');
 const SECRET = "projetopes";
