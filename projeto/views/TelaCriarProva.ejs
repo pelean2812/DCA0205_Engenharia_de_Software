@@ -11,7 +11,8 @@
     <center>
         <img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
         <h1>SELECIONE AS QUESTÕES PARA COLOCAR NA PROVA</h1>
-        
+        <button class="btn btn-light" onclick="exibirIds()"> Exibir ids </button><br><br>
+
         <div id="teste" style = "display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 100%; "></div><br>
         <button class="btn btn-light" onclick="voltar()"> Voltar </button><br><br>
 
@@ -31,9 +32,15 @@
         // }
         
         //Função para adicionar a questão na prova
+        var ids = [];
         async function adicionarQuestaoProva(id) {
-            alert(id);
+            //aqui só tá adicionando o id da questao
+            ids.push(id);
             carregar();
+        }
+
+        function exibirIds(){
+            alert(ids);
         }
 
         //Função para carregar as questões do banco
