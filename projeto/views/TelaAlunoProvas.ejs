@@ -12,12 +12,33 @@
         <img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
         <h1>TELA DE PROVAS</h1>
 
-        <button class="btn btn-light" onclick="logout()"> <a style="text-decoration: none"> Deslogar </a> </button><br><br>
+        <div id="teste" style = "display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 100%; "></div><br>
+        <button class="btn btn-light" onclick="logout()"> <a style="text-decoration: none"> Deslogar </a>
+        </button><br><br>
     </center>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        function logout(){
+        async function carregar() {
+            const resposta = await axios.get('http://localhost:3000/exam');
+            const data = resposta.data.exams;
+            document.getElementById("teste").innerHTML = '';
+            var q;
+            for (let i = 0; i < data.length; i++) {
+                q = `<div class='card' style='width: 18rem; margin-bottom: 20px'>\
+                            <div class='card-body'>\
+                               <h5 class='card-title'>Prova  ${i + 1} </h5>\
+                               <p class='card-text'>id:  ${data[i].id} </p><br/>\
+                               <p class='card-text'>Professor:  ${data[i].teachername??'Professor x'} </p><br/>\
+                           </div>\
+                        </div></br>`;
+
+                document.getElementById("teste").innerHTML += q;
+            }
+        }
+        carregar();
+
+        function logout() {
             axios.get('http://localhost:3000/logout');
             window.location.replace('/');
         }

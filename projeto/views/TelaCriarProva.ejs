@@ -11,37 +11,17 @@
     <center>
         <img src="https://ufrn.br/resources/img/logo-ufrn-color-og.png">
         <h1>SELECIONE AS QUESTÕES PARA COLOCAR NA PROVA</h1>
-        <button class="btn btn-light" onclick="exibirIds()"> Exibir ids </button><br><br>
 
-        <div id="teste" style = "display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 100%; "></div><br>
+        <div id="teste" style="display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 100%; "></div>
+        <br>
+        <button class="btn btn-primary" onclick="criarProva()"> Cadastrar prova </button><br><br>
         <button class="btn btn-light" onclick="voltar()"> Voltar </button><br><br>
-
     </center>
     <!-- Importando a biblioteca axios para fazer requisições-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        function irParaCadastro(){
-            window.location.replace('/TelaCadastro');
-        }
         //O array respostas é só para ajeitar a visualização do item "Resposta"
-        const respostas = ['A','B','C', 'D'];
-        // Função para apagar questão do banco
-        // async function apagar(id) {
-        //     axios.delete(`http://localhost:3000/question/${id}`);
-        //     carregar();
-        // }
-        
-        //Função para adicionar a questão na prova
-        var ids = [];
-        async function adicionarQuestaoProva(id) {
-            //aqui só tá adicionando o id da questao
-            ids.push(id);
-            carregar();
-        }
-
-        function exibirIds(){
-            alert(ids);
-        }
+        const respostas = ['A', 'B', 'C', 'D'];
 
         //Função para carregar as questões do banco
         async function carregar() {
@@ -50,9 +30,9 @@
             document.getElementById("teste").innerHTML = '';
             var q;
             for (let i = 0; i < data.length; i++) {
-                q = `<div class='card' style='width: 18rem; margin-bottom: 20px'>\
+                q = `<div class='card' id=question-${data[i].id} style='width: 18rem; margin-bottom: 20px'>\
                             <div class='card-body'>\
-                               <h5 class='card-title'>Questão  ${i+1} </h5>\
+                               <h5 class='card-title'>Questão  ${i + 1} </h5>\
                                <p class='card-text'>id:  ${data[i].id} </p><br/>\
                                <p class='card-text'>Enunciado:  ${data[i].enunciado} </p><br/>\
                                <p class='card-text'>A:  ${data[i].alternativas[0]} </p><br/>\
@@ -70,7 +50,31 @@
             }
         }
         carregar();
-        function voltar(){
+
+        //Função para adicionar a questão na prova
+        var ids = [];
+        async function adicionarQuestaoProva(id) {
+            if (!ids.includes(id)) {
+                ids.push(id);
+                let questionCard = document.getElementById(`question-${id}`);
+                questionCard.innerHTML += `<button class='btn btn-danger' onclick='removerQuestaoProva(${id})'>REMOVER</button>`
+            }
+        }
+        async function removerQuestaoProva(id) {
+            ids = ids.filter((q)=>(
+                q !== id
+            ));
+            let questionCard = document.getElementById(`question-${id}`);
+            questionCard.removeChild(questionCard.lastElementChild);
+        }
+
+        async function criarProva(){
+            await axios.post('http://localhost:3000/exam',{ids: ids});
+            alert("Prova cadastrada com sucesso");
+            window.location.replace('/QuestoesCadastradas');
+        }
+
+        function voltar() {
             window.location.replace('/QuestoesCadastradas');
         }
     </script>

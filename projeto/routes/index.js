@@ -82,6 +82,8 @@ var questions = [
   }
 ];
 
+var exams= [];
+
 //Framework Express
 var express = require('express');
 var router = express.Router();
@@ -126,6 +128,8 @@ function verifyJWT(req,res,next){
     }
     req.userid = decoded.userid;
     req.role = decoded.role;
+    //req.username = users.filter((user) => (user.id === decoded.userid));
+    req.username = decoded.username;
     next();
   })
 }
@@ -223,6 +227,29 @@ router.delete('/question/:id', verifyJWT, (req, res) => {
   return res.sendStatus(200);
 });
 
+//Rota POST para cadastrar provas
+router.post('/exam', verifyJWT, (req, res) => {
+  if(req.role !== 'teacher'){
+    return res.sendStatus(401);
+  }
+  let ids = req.body.ids;
+  let newQuestions = questions.filter((question) => (ids.includes(question.id)));
+  exams.push({
+    id: exams.length+1,
+    questions: newQuestions,
+    teachername: req.username
+  })
+  res.sendStatus(200);
+  return;
+});
+
+//Rota para obter provas
+router.get('/exam', verifyJWT, (req, res) => {
+    res.send({ exams });
+  return;
+});
+
+//Rota de saída
 router.get('/logout', (req, res) =>{
   res.clearCookie('token');
   return res.sendStatus(200);
